@@ -73,6 +73,7 @@ class BundleMaker:
         )
         self._root_manifest_path = Path(root_manifest_path)
         self._ignore = ignore
+        logger.info(f"new BundleMaker. ignore = [{ ','.join(self._ignore)}]")
 
     def ignore_match(self, path: Path) -> Optional[str]:
         """Determines the ignore glob path, if any, which matches given path.
@@ -81,6 +82,7 @@ class BundleMaker:
         """
         if self._ignore != None:
             for ignore in self._ignore:
+                logger.info(f"should ignore `{path}` against `{ignore}`? {path.match(ignore)}")
                 if path.match(ignore):
                     return ignore
         return None
