@@ -74,7 +74,6 @@ class BundleMaker:
         )
         self._root_manifest_path = Path(root_manifest_path)
  
-        logger.info(f"BundleMaker(bundle_ignore=[{bundle_ignore}])")
         self._bundle_ignore = bundle_ignore
         self._find_ignore_match = partial(find_ignore_match, bundle_ignore=bundle_ignore)
         self._diffed_file_find_ignore_match = lambda diff: find_ignore_match(diff.b_path, bundle_ignore)
